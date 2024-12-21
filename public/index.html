@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Monitoring</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <button class="tab active">Monitoring</button>
+      <button class="tab">Alerts</button>
+      <button class="tab">Logs</button>
+    </nav>
+  </header>
+  <main>
+    <section class="dashboard">
+      <div class="chart-container">
+        <canvas id="kelembabanUdara"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="kelembabanTanah"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="phTanah"></canvas>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead><tr><th>Hari</th><th>Banyak (Liter)</th></tr></thead>
+          <tbody>
+            <tr><td>Senin</td><td>15</td></tr>
+            <tr><td>Selasa</td><td>8</td></tr>
+            <tr><td>Rabu</td><td>4</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="chart-container">
+        <canvas id="suhuTanah"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="suhuUdara"></canvas>
+      </div>
+    </section>
+  </main>
+  <script src="charts.js"></script>
+</body>
+</html>
