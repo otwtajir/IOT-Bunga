@@ -27,7 +27,7 @@ client.on('connect', () => {
                 console.log(`Published message to ${topic}:`, message);
             }
         });
-    }, 5000); // Kirim setiap 5 detik
+    }, 60000); // Kirim setiap 1 menit
 });
 
 client.on('error', (err) => {
