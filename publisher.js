@@ -16,8 +16,11 @@ client.on('connect', () => {
 
     setInterval(() => {
         const message = JSON.stringify({
-            temperature: (20 + Math.random() * 10).toFixed(2),
-            humidity: (50 + Math.random() * 10).toFixed(2),
+            temperature: (20 + Math.random() * 10).toFixed(2), // Suhu udara
+            soilTemperature: (20 + Math.random() * 10).toFixed(2), // Suhu tanah
+            humidity: (50 + Math.random() * 10).toFixed(2), // Kelembaban udara
+            soilHumidity: (40 + Math.random() * 10).toFixed(2), // Kelembaban tanah
+            soilPH: (5.5 + Math.random() * 1.5).toFixed(2) // pH tanah
         });
 
         client.publish(topic, message, { qos: 0 }, (err) => {

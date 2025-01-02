@@ -72,3 +72,12 @@ table th, table td {
     grid-template-columns: 1fr;
   }
 }
+
+.notification {
+  font-size: 18px;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e0f7fa;
+  border: 1px solid #b2ebf2;
+  border-radius: 5px;
+}

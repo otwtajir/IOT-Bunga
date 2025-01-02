@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,30 +17,41 @@
   </header>
   <main>
     <section class="dashboard">
+      <div>
+        <label for="updateInterval">Interval Pembaruan:</label>
+        <select id="updateInterval">
+          <option value="30000">30 detik</option>
+          <option value="60000">1 menit</option>
+          <option value="300000">5 menit</option>
+          <option value="600000">10 menit</option>
+          <option value="1800000">30 menit</option>
+          <option value="3600000">1 jam</option>
+        </select>
+      </div>
+
       <div class="chart-container">
         <canvas id="kelembabanUdara"></canvas>
+        <div id="kelembabanUdaraValue">Kelembaban Udara: <span>0</span>%</div>
       </div>
       <div class="chart-container">
         <canvas id="kelembabanTanah"></canvas>
+        <div id="kelembabanTanahValue">Kelembaban Tanah: <span>0</span>%</div>
       </div>
       <div class="chart-container">
         <canvas id="phTanah"></canvas>
-      </div>
-      <div class="table-container">
-        <table>
-          <thead><tr><th>Hari</th><th>Banyak (Liter)</th></tr></thead>
-          <tbody>
-            <tr><td>Senin</td><td>15</td></tr>
-            <tr><td>Selasa</td><td>8</td></tr>
-            <tr><td>Rabu</td><td>4</td></tr>
-          </tbody>
-        </table>
+        <div id="phTanahValue">pH Tanah: <span>0</span></div>
       </div>
       <div class="chart-container">
         <canvas id="suhuTanah"></canvas>
+        <div id="suhuTanahValue">Suhu Tanah: <span>0</span>°C</div>
       </div>
       <div class="chart-container">
         <canvas id="suhuUdara"></canvas>
+        <div id="suhuUdaraValue">Suhu Udara: <span>0</span>°C</div>
+      </div>
+
+      <div id="wateringMessage" class="notification">
+        Status Penyiraman: Tidak Perlu Disiram
       </div>
     </section>
   </main>
