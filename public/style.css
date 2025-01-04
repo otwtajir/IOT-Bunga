@@ -81,3 +81,70 @@ table th, table td {
   border: 1px solid #b2ebf2;
   border-radius: 5px;
 }
+
+/* Tambahan untuk container kontrol */
+.controls-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: #fff;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Styling untuk label */
+.control-group label {
+  font-weight: 500;
+  color: #333;
+  min-width: 140px;
+}
+
+/* Styling untuk select */
+.control-group select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  min-width: 150px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.control-group select:hover {
+  border-color: #4c6ef5;
+}
+
+.control-group select:focus {
+  outline: none;
+  border-color: #4c6ef5;
+  box-shadow: 0 0 0 2px rgba(76, 110, 245, 0.1);
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+  .controls-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .control-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .control-group label {
+    margin-bottom: 5px;
+  }
+}
+
