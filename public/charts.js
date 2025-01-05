@@ -293,6 +293,8 @@ function updatePotDisplay() {
 
     const pot1Charts = document.querySelectorAll('.pot1');
     const pot2Charts = document.querySelectorAll('.pot2');
+    const pot1Status = document.querySelector('.status-card.pot1');
+    const pot2Status = document.querySelector('.status-card.pot2');
 
     if (selectedPot === 'pot1') {
         pot1Charts.forEach(chart => chart.style.display = 'block');
@@ -301,8 +303,10 @@ function updatePotDisplay() {
         pot1Charts.forEach(chart => chart.style.display = 'none');
         pot2Charts.forEach(chart => chart.style.display = 'block');
     } else {
-        pot1Charts.forEach(chart => chart.style.display = 'block');
-        pot2Charts.forEach(chart => chart.style.display = 'block');
+        pot1Charts.forEach(chart => chart.style.display = 'none');
+        pot2Charts.forEach(chart => chart.style.display = 'none');
+        pot1Status.style.display = 'block';
+        pot2Status.style.display = 'block';
     }
 }
 
