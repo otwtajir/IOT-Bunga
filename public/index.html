@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,43 +8,153 @@
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
   <header>
     <nav>
       <button class="tab active">Monitoring</button>
       <button class="tab">Alerts</button>
-      <button class="tab">Logs</button>
     </nav>
   </header>
   <main>
+
+    <div class="controls-container">
+      <div class="control-group">
+        <label for="updateInterval">Interval Pembaruan:</label>
+        <select id="updateInterval">
+          <option value="30000">30 detik</option>
+          <option value="60000">1 menit</option>
+          <option value="300000">5 menit</option>
+          <option value="600000">10 menit</option>
+          <option value="1800000">30 menit</option>
+          <option value="3600000">1 jam</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="potSelection">Pilih Pot:</label>
+        <select id="potSelection">
+          <option value="pot1" selected>Pot 1</option>
+          <option value="pot2">Pot 2</option>
+          <option value="all">Semua Pot</option>
+        </select>
+      </div>
+    </div>
+
     <section class="dashboard">
-      <div class="chart-container">
-        <canvas id="kelembabanUdara"></canvas>
+      <!-- Tambahkan setelah tag </section> di HTML -->
+      <div id="alertModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Alert History</h2>
+            <span class="close">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div id="alertHistory"></div>
+          </div>
+        </div>
       </div>
-      <div class="chart-container">
-        <canvas id="kelembabanTanah"></canvas>
+
+      <div class="plant-status">
+        <div class="status-card pot1">
+          <h3>Status Bougainvillea - Pot 1</h3>
+          <div id="plantStatus1" class="status-details">
+            <div class="parameter">
+              <span class="label">Kelembaban Tanah:</span>
+              <span class="value" id="soilHumidityStatus1">-</span>
+            </div>
+            <div class="parameter">
+              <span class="label">pH Tanah:</span>
+              <span class="value" id="soilPhStatus1">-</span>
+            </div>
+            <div class="parameter">
+              <span class="label">Suhu Udara:</span>
+              <span class="value" id="airTempStatus1">-</span>
+            </div>
+            <div class="parameter">
+              <span class="label">Kelembaban Udara:</span>
+              <span class="value" id="airHumidityStatus1">-</span>
+            </div>
+            <div class="watering-status">
+              <span class="label">Status Penyiraman:</span>
+              <span class="value" id="wateringStatus1">-</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="status-card pot2" style="display: none;">
+          <h3>Status Bougainvillea - Pot 2</h3>
+          <div id="plantStatus2" class="status-details">
+            <div class="parameter">
+              <span class="label">Kelembaban Tanah:</span>
+              <span class="value" id="soilHumidityStatus2">-</span>
+            </div>
+            <div class="parameter">
+              <span class="label">pH Tanah:</span>
+              <span class="value" id="soilPhStatus2">-</span>
+            </div>
+            <div class="parameter">
+              <span class="label">Suhu Udara:</span>
+              <span class="value" id="airTempStatus2">-</span>
+            </div>
+            <div class="parameter">
+              <span class="label">Kelembaban Udara:</span>
+              <span class="value" id="airHumidityStatus2">-</span>
+            </div>
+            <div class="watering-status">
+              <span class="label">Status Penyiraman:</span>
+              <span class="value" id="wateringStatus2">-</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="chart-container">
-        <canvas id="phTanah"></canvas>
+
+      <!-- Chart untuk Pot 1 -->
+      <div class="chart-container pot1">
+        <canvas id="kelembabanUdara1"></canvas>
+        <div id="kelembabanUdaraValue1">Kelembaban Udara Pot 1: <span>0</span>%</div>
       </div>
-      <div class="table-container">
-        <table>
-          <thead><tr><th>Hari</th><th>Banyak (Liter)</th></tr></thead>
-          <tbody>
-            <tr><td>Senin</td><td>15</td></tr>
-            <tr><td>Selasa</td><td>8</td></tr>
-            <tr><td>Rabu</td><td>4</td></tr>
-          </tbody>
-        </table>
+      <div class="chart-container pot1">
+        <canvas id="kelembabanTanah1"></canvas>
+        <div id="kelembabanTanahValue1">Kelembaban Tanah Pot 1: <span>0</span>%</div>
       </div>
-      <div class="chart-container">
-        <canvas id="suhuTanah"></canvas>
+      <div class="chart-container pot1">
+        <canvas id="phTanah1"></canvas>
+        <div id="phTanahValue1">pH Tanah Pot 1: <span>0</span></div>
       </div>
-      <div class="chart-container">
-        <canvas id="suhuUdara"></canvas>
+      <div class="chart-container pot1">
+        <canvas id="suhuTanah1"></canvas>
+        <div id="suhuTanahValue1">Suhu Tanah Pot 1: <span>0</span>°C</div>
+      </div>
+      <div class="chart-container pot1">
+        <canvas id="suhuUdara1"></canvas>
+        <div id="suhuUdaraValue1">Suhu Udara Pot 1: <span>0</span>°C</div>
+      </div>
+
+      <!-- Chart untuk Pot 2 -->
+      <div class="chart-container pot2" style="display: none;">
+        <canvas id="kelembabanUdara2"></canvas>
+        <div id="kelembabanUdaraValue2">Kelembaban Udara Pot 2: <span>0</span>%</div>
+      </div>
+      <div class="chart-container pot2" style="display: none;">
+        <canvas id="kelembabanTanah2"></canvas>
+        <div id="kelembabanTanahValue2">Kelembaban Tanah Pot 2: <span>0</span>%</div>
+      </div>
+      <div class="chart-container pot2" style="display: none;">
+        <canvas id="phTanah2"></canvas>
+        <div id="phTanahValue2">pH Tanah Pot 2: <span>0</span></div>
+      </div>
+      <div class="chart-container pot2" style="display: none;">
+        <canvas id="suhuTanah2"></canvas>
+        <div id="suhuTanahValue2">Suhu Tanah Pot 2: <span>0</span>°C</div>
+      </div>
+      <div class="chart-container pot2" style="display: none;">
+        <canvas id="suhuUdara2"></canvas>
+        <div id="suhuUdaraValue2">Suhu Udara Pot 2: <span>0</span>°C</div>
       </div>
     </section>
   </main>
   <script src="charts.js"></script>
 </body>
+
 </html>
